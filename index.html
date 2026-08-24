@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WytNet — Interactive User & Developer Guidance Portal</title>
+  <meta name="description" content="Explore WytNet features, SSO integrations, payment configurations, and developer guidance with our interactive step-by-step dashboard.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Icons (Lucide Icons) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Top Reading Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="app-header">
+    <div class="logo-container">
+      <div class="logo-icon">W</div>
+      <div class="logo-text">Wyt<span>Net</span></div>
+      <span class="badge">Docs</span>
+    </div>
+    
+    <!-- Search Trigger Button (AlloWear Style) -->
+    <button class="search-trigger-btn" id="search-trigger">
+      <i data-lucide="search" class="search-icon"></i>
+      <span>Search docs...</span>
+      <span class="search-shortcut">Ctrl + K</span>
+    </button>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+        <i data-lucide="sun" class="sun-icon"></i>
+        <i data-lucide="moon" class="moon-icon"></i>
+      </button>
+      <a href="https://wytnet.com" target="_blank" class="btn btn-primary">
+        Go to WytNet
+        <i data-lucide="external-link"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Overview</div>
+        <a href="#welcome" class="nav-item active">
+          <i data-lucide="home"></i>
+          Overview
+        </a>
+        <a href="#workflow" class="nav-item">
+          <i data-lucide="git-branch"></i>
+          WytNet Workflow
+        </a>
+
+        <div class="nav-section-title">User Guides</div>
+        <a href="#user-reg" class="nav-item">
+          <i data-lucide="user-plus"></i>
+          User Registration
+        </a>
+
+        <div class="nav-section-title">Developer Guides</div>
+        <a href="#dev-account" class="nav-item">
+          <i data-lucide="shield-check"></i>
+          Developer Account
+        </a>
+        <a href="#app-creation" class="nav-item">
+          <i data-lucide="plus-circle"></i>
+          App Creation
+        </a>
+        <a href="#app-edit" class="nav-item">
+          <i data-lucide="edit-3"></i>
+          App Edit Request
+        </a>
+
+        <div class="nav-section-title">Integrations & Finance</div>
+        <a href="#sso" class="nav-item">
+          <i data-lucide="key-round"></i>
+          WytPass SSO
+        </a>
+        <a href="#payment" class="nav-item">
+          <i data-lucide="credit-card"></i>
+          Centralized Payment
+        </a>
+        <a href="#rules-usage" class="nav-item">
+          <i data-lucide="check-square"></i>
+          Usage Guidelines
+        </a>
+        <a href="#settlements" class="nav-item">
+          <i data-lucide="wallet"></i>
+          Settlements & Earning
+        </a>
+
+        <div class="nav-section-title">Support & Help</div>
+        <a href="#faq" class="nav-item">
+          <i data-lucide="help-circle"></i>
+          FAQ
+        </a>
+      </nav>
+
+      <!-- Sidebar Progress Tracker Card -->
+      <div class="progress-card">
+        <div class="progress-card-header">
+          <span class="progress-title">Checklist Progress</span>
+          <span class="progress-percent" id="progress-percent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="progress-subtitle">Complete steps below to track progress</p>
+        <button id="reset-checklist" class="btn btn-outline btn-sm">Reset Steps</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+
+      <!-- Welcome / Dashboard Intro Section -->
+      <section id="welcome" class="content-section">
+        <div class="welcome-hero">
+          <div class="hero-tag">Product Documentation</div>
+          <h1>WytNet Ecosystem Integration</h1>
+          <p class="lead">WytNet is an integrated app marketplace, secure single sign-on provider (WytPass SSO), and centralized payment ecosystem. Follow this interactive guide to create accounts, publish apps, integrate SSO, configure webhooks, and manage settlements.</p>
+          <div style="margin-top: 25px; display: flex; gap: 12px;">
+            <a href="#workflow" class="btn btn-primary">Explore Workflow <i data-lucide="arrow-right"></i></a>
+            <a href="#sso" class="btn btn-outline">SSO Setup Guide</a>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="user"></i></div>
+            <h3>For Users</h3>
+            <p>Register an account to explore applications, verify details, and checkout securely using unified WytNet credentials.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="code-2"></i></div>
+            <h3>For Developers</h3>
+            <p>Apply for developer status, list products, integrate secure authentication callbacks, and track customer analytics.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="coins"></i></div>
+            <h3>SSO & Payments</h3>
+            <p>Embed WytPass SSO Client ID/Secrets, configure webhooks for transaction updates, and schedule automatic bank payouts.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Flow/Workflow Diagram Section -->
+      <section id="workflow" class="content-section">
+        <div class="section-header">
+          <h2>Interactive Ecosystem Workflow</h2>
+          <p>Click on the workflow steps to learn how users, developers, SSO services, and payment systems interact on WytNet.</p>
+        </div>
+
+        <div class="interactive-flowcard">
+          <!-- Flow Steps Nodes -->
+          <div class="flow-steps">
+            <div class="flow-node active" data-step="1">
+              <span class="node-num">1</span>
+              <span class="node-label">Registration</span>
+            </div>
+            <div class="flow-connector"></div>
+            <div class="flow-node" data-step="2">
+              <span class="node-num">2</span>
+              <span class="node-label">Dev Registry</span>
+            </div>
+            <div class="flow-connector"></div>
+            <div class="flow-node" data-step="3">
+              <span class="node-num">3</span>
+              <span class="node-label">App Listing</span>
+            </div>
+            <div class="flow-connector"></div>
+            <div class="flow-node" data-step="4">
+              <span class="node-num">4</span>
+              <span class="node-label">SSO & Payment</span>
+            </div>
+            <div class="flow-connector"></div>
+            <div class="flow-node" data-step="5">
+              <span class="node-num">5</span>
+              <span class="node-label">Payouts</span>
+            </div>
+          </div>
+
+          <!-- Flow Explanation Container -->
+          <div class="flow-explanation" id="flow-explanation-box">
+            <h4 id="flow-step-title">1. User Account Registration</h4>
+            <p id="flow-step-desc">Users register on WytNet using their name, verified email, username, phone number, and password. This unified profile acts as their digital passport across all third-party applications inside the WytNet network.</p>
+            <div class="flow-tip">
+              <strong>Tip:</strong> Users can also register instantly using Google OAuth authentication.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 1: User Registration -->
+      <section id="user-reg" class="content-section">
+        <div class="section-header">
+          <h2>User Registration Flow</h2>
+          <p>Set up an account to browse and register inside WytNet services.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="user-reg">
+                <li>
+                  <input type="checkbox" id="user-step-1" class="task-checkbox">
+                  <label for="user-step-1">Navigate to the login page.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="user-step-2" class="task-checkbox">
+                  <label for="user-step-2">Choose "Create Account" if you do not have a login, or select "Continue with Google".</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="user-step-3" class="task-checkbox">
+                  <label for="user-step-3">Fill out all registration fields on the form.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="user-step-4" class="task-checkbox">
+                  <label for="user-step-4">Perform email verification to activate the account.</label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="details-card">
+              <h4>Required Registration Fields</h4>
+              <div class="fields-list">
+                <div class="field-item">
+                  <span class="field-name">Full Name</span>
+                  <span class="field-desc">Legal name for authentication and receipts.</span>
+                </div>
+                <div class="field-item">
+                  <span class="field-name">Username</span>
+                  <span class="field-desc">Unique identifier on the WytNet platform.</span>
+                </div>
+                <div class="field-item">
+                  <span class="field-name">Email</span>
+                  <span class="field-desc">Requires one-time OTP verification check.</span>
+                </div>
+                <div class="field-item">
+                  <span class="field-name">Phone Number</span>
+                  <span class="field-desc">Used for fallback recovery and alerts.</span>
+                </div>
+                <div class="field-item">
+                  <span class="field-name">Password</span>
+                  <span class="field-desc">Must be secure (numbers, letters, symbols).</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+                <div class="browser-address">wytnet.com/register</div>
+              </div>
+              <div class="browser-body">
+                <img src="public/images/image1.png" alt="WytNet User Registration Screen" class="lightbox-trigger">
+              </div>
+            </div>
+            <div class="caption">Click on the image to preview details in fullscreen.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Developer Account -->
+      <section id="dev-account" class="content-section">
+        <div class="section-header">
+          <h2>Developer Registration</h2>
+          <p>Register as a certified developer to list apps and generate revenue pipelines on the WytNet ecosystem.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="dev-account">
+                <li>
+                  <input type="checkbox" id="dev-step-1" class="task-checkbox">
+                  <label for="dev-step-1">Go to <a href="https://wytnet.com/developers" target="_blank">wytnet.com/developers</a>.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="dev-step-2" class="task-checkbox">
+                  <label for="dev-step-2">Fill in your Developer Account details.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="dev-step-3" class="task-checkbox">
+                  <label for="dev-step-3">Provide Organisation details (name, website, description, contact details).</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="dev-step-4" class="task-checkbox">
+                  <label for="dev-step-4">Submit the application form for admin review.</label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="alert-box alert-info">
+              <i data-lucide="info"></i>
+              <div>
+                <strong>Admin Verification Required</strong>
+                <p>After submission, WytNet administrators manually verify your organisation. An email update will notify you once accepted or rejected.</p>
+              </div>
+            </div>
+
+            <div class="details-card">
+              <h4>Required Developer & Org Form Data</h4>
+              <div class="fields-list">
+                <div class="field-item">
+                  <span class="field-name">Organisation Name</span>
+                  <span class="field-desc">Legal name representing apps published under this team.</span>
+                </div>
+                <div class="field-item">
+                  <span class="field-name">Organisation Website</span>
+                  <span class="field-desc">Official domain link to verify credibility.</span>
+                </div>
+                <div class="field-item">
+                  <span class="field-name">Contact Information</span>
+                  <span class="field-desc">Dedicated email and contact numbers for merchant alerts.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+                <div class="browser-address">wytnet.com/developers</div>
+              </div>
+              <div class="browser-body">
+                <img src="public/images/image2.png" alt="WytNet Developer Form" class="lightbox-trigger">
+              </div>
+            </div>
+            <div class="caption">Click to view developer form mockup.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: App Creation -->
+      <section id="app-creation" class="content-section">
+        <div class="section-header">
+          <h2>Application Creation Workflow</h2>
+          <p>Create and set up app parameters, branding assets, SSO integrations, and submission workflows.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="app-creation">
+                <li>
+                  <input type="checkbox" id="app-step-1" class="task-checkbox">
+                  <label for="app-step-1">Navigate to "Manage Apps" and click the "Add App" button.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="app-step-2" class="task-checkbox">
+                  <label for="app-step-2">Fill in basic "App Details" (Name, categories, support email).</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="app-step-3" class="task-checkbox">
+                  <label for="app-step-3">Upload visual assets (Screenshots, Logo) and enter a Video demo URL under "Assets & Media".</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="app-step-4" class="task-checkbox">
+                  <label for="app-step-4">Obtain WytPass SSO credentials (Client ID / Client Secret).</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="app-step-5" class="task-checkbox">
+                  <label for="app-step-5">Configure Centralized Payment parameters.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="app-step-6" class="task-checkbox">
+                  <label for="app-step-6">Submit for admin review under the submission tab.</label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="details-card">
+              <h4>Submission Stages</h4>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-bullet"></div>
+                  <div class="timeline-content">
+                    <h5>Draft / Setup</h5>
+                    <p>Enter app metadata, upload media, and test credentials.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-bullet"></div>
+                  <div class="timeline-content">
+                    <h5>Admin Review</h5>
+                    <p>WytNet staff tests the callback parameters, media quality, and functionality.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-bullet"></div>
+                  <div class="timeline-content">
+                    <h5>Live Marketplace</h5>
+                    <p>The app is listed publicly, allowing users to authenticate and purchase seamlessly.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <!-- Carousel-like display of images -->
+            <div class="carousel-container">
+              <div class="carousel-slides">
+                <div class="browser-mockup carousel-slide active">
+                  <div class="browser-header">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                    <div class="browser-address">wytnet.com/manage-apps/workflow</div>
+                  </div>
+                  <div class="browser-body">
+                    <img src="public/images/image3.png" alt="WytNet App Details Dashboard" class="lightbox-trigger">
+                  </div>
+                  <div class="carousel-caption">Slide 1: App Configuration & Workflow Screen</div>
+                </div>
+
+                <div class="browser-mockup carousel-slide">
+                  <div class="browser-header">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                    <div class="browser-address">wytnet.com/manage-apps/submit</div>
+                  </div>
+                  <div class="browser-body">
+                    <img src="public/images/image4.png" alt="WytNet App Review Status Screen" class="lightbox-trigger">
+                  </div>
+                  <div class="carousel-caption">Slide 2: Review submission and check status</div>
+                </div>
+              </div>
+
+              <div class="carousel-controls">
+                <button class="carousel-btn prev-btn"><i data-lucide="chevron-left"></i> Previous</button>
+                <div class="carousel-dots">
+                  <span class="dot active" data-slide="0"></span>
+                  <span class="dot" data-slide="1"></span>
+                </div>
+                <button class="carousel-btn next-btn">Next <i data-lucide="chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: App Edit Request -->
+      <section id="app-edit" class="content-section">
+        <div class="section-header">
+          <h2>App Edit Requests</h2>
+          <p>Modify a published app or an app currently in review by requesting an edit lock release.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="app-edit">
+                <li>
+                  <input type="checkbox" id="edit-step-1" class="task-checkbox">
+                  <label for="edit-step-1">Navigate to your app under the Developer Dashboard.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="edit-step-2" class="task-checkbox">
+                  <label for="edit-step-2">Click the "App Edit Request" button to unlock edit capabilities.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="edit-step-3" class="task-checkbox">
+                  <label for="edit-step-3">Apply modifications (fields, assets, webhooks).</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="edit-step-4" class="task-checkbox">
+                  <label for="edit-step-4">Re-submit your application for admin review.</label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="alert-box alert-warning">
+              <i data-lucide="alert-triangle"></i>
+              <div>
+                <strong>Why is editing locked?</strong>
+                <p>To preserve security and verify authenticity, any edit to a live app must go through review. This avoids malicious changes to client redirect callbacks or payout webhook destinations.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+                <div class="browser-address">wytnet.com/manage-apps/edit-request</div>
+              </div>
+              <div class="browser-body">
+                <img src="public/images/image5.png" alt="WytNet App Edit Unlock Mockup" class="lightbox-trigger">
+              </div>
+            </div>
+            <div class="caption">Click on the image to view app edit unlocking controls.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: SSO Integration -->
+      <section id="sso" class="content-section">
+        <div class="section-header">
+          <h2>WytPass SSO Integration</h2>
+          <p>Set up Single Sign-On (SSO) with WytNet to allow users to securely authenticate using their unified profile.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="sso">
+                <li>
+                  <input type="checkbox" id="sso-step-1" class="task-checkbox">
+                  <label for="sso-step-1">Retrieve your Client ID and Client Secret from the App SSO Integration page.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="sso-step-2" class="task-checkbox">
+                  <label for="sso-step-2">Copy the OAuth API endpoint settings.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="sso-step-3" class="task-checkbox">
+                  <label for="sso-step-3">Add your application's redirect/callback URL inside the WytNet portal.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="sso-step-4" class="task-checkbox">
+                  <label for="sso-step-4">Test authentication and check the user logs interface to confirm connections.</label>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Code snippet display -->
+            <div class="code-box">
+              <div class="code-header">
+                <span>OAuth endpoints configuration</span>
+                <button class="copy-btn" data-copy-target="oauth-endpoints">Copy Code</button>
+              </div>
+              <pre><code id="oauth-endpoints" class="language-javascript">{
+  "authorize_url": "https://api.wytnet.com/oauth/authorize",
+  "token_url": "https://api.wytnet.com/oauth/token",
+  "user_info_url": "https://api.wytnet.com/oauth/userinfo",
+  "client_id": "YOUR_WYTNET_CLIENT_ID",
+  "client_secret": "YOUR_WYTNET_CLIENT_SECRET"
+}</code></pre>
+            </div>
+
+            <div class="alert-box alert-danger">
+              <i data-lucide="shield-alert"></i>
+              <div>
+                <strong>Keep Client Secret Secure</strong>
+                <p>Never expose the Client Secret in client-side code (frontend JavaScript). Always request tokens from a secure backend application server.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+                <div class="browser-address">wytnet.com/manage-apps/sso</div>
+              </div>
+              <div class="browser-body">
+                <img src="public/images/image6.png" alt="SSO callback settings screen" class="lightbox-trigger">
+              </div>
+            </div>
+            <div class="caption">Click on the image to view redirect callback and SSO settings UI.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Centralized Payment -->
+      <section id="payment" class="content-section">
+        <div class="section-header">
+          <h2>Centralized Payment Integration</h2>
+          <p>Enable checkout flows using WytNet Centralized Payments, allowing webhooks and domain configurations.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="payment">
+                <li>
+                  <input type="checkbox" id="pay-step-1" class="task-checkbox">
+                  <label for="pay-step-1">Add your Client ID and Client Secret in your backend checkout handler.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="pay-step-2" class="task-checkbox">
+                  <label for="pay-step-2">Enter your website's Webhook URL (for receiving transaction update events).</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="pay-step-3" class="task-checkbox">
+                  <label for="pay-step-3">Provide Success Redirect URL & Failure Redirect URL details.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="pay-step-4" class="task-checkbox">
+                  <label for="pay-step-4">Specify the Allowed Domains of your website to prevent unauthorized checkout request origins.</label>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Code snippet display -->
+            <div class="code-box">
+              <div class="code-header">
+                <span>Standard Webhook Dispatch Payload</span>
+                <button class="copy-btn" data-copy-target="webhook-payload">Copy Code</button>
+              </div>
+              <pre><code id="webhook-payload" class="language-json">{
+  "app_id": 4,
+  "order_id": "order_wyt_8019481",
+  "payment_id": "pay_razor_920194819",
+  "status": "success",
+  "amount": 29.99,
+  "currency": "USD",
+  "customer_id": "usr_90218491",
+  "plan_id": "plan_premium_monthly",
+  "metadata": {
+    "custom_reference": "ref_90184"
+  },
+  "transaction_time": "2026-08-24T10:57:00.123456"
+}</code></pre>
+            </div>
+
+            <!-- Code snippet for Test Webhook -->
+            <div class="code-box">
+              <div class="code-header">
+                <span>Test Connection Webhook Payload (payment.test_ping)</span>
+                <button class="copy-btn" data-copy-target="webhook-test-payload">Copy Code</button>
+              </div>
+              <pre><code id="webhook-test-payload" class="language-json">{
+  "event": "payment.test_ping",
+  "app_id": 4,
+  "timestamp": "2026-08-24T10:57:00.123456"
+}</code></pre>
+            </div>
+
+            <!-- Signature Verification Panel -->
+            <div class="details-card">
+              <h4>Signature Verification Flow</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                WytNet signs every webhook payload using HMAC-SHA256 to ensure authenticity. The signature is sent in the header <code>X-WhiteNet-Signature</code>.
+              </p>
+              <div class="code-box">
+                <div class="code-header">
+                  <span>Python Verification Example</span>
+                  <button class="copy-btn" data-copy-target="signature-verification-code">Copy Code</button>
+                </div>
+                <pre><code id="signature-verification-code" class="language-python">import hmac
+import hashlib
+import json
+
+# payload_bytes: Raw HTTP request body bytes
+# client_secret: Your App Client Secret
+# received_signature: Value of X-WhiteNet-Signature header
+
+# 1. Parse and sort JSON keys to recreate original payload string
+payload_dict = json.loads(payload_bytes.decode('utf-8'))
+payload_str = json.dumps(payload_dict, sort_keys=True)
+
+# 2. Compute expected signature
+expected_signature = hmac.new(
+    client_secret.encode('utf-8'),
+    payload_str.encode('utf-8'),
+    hashlib.sha256
+).hexdigest()
+
+# 3. Securely compare signatures
+is_valid = hmac.compare_digest(expected_signature, received_signature)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+                <div class="browser-address">wytnet.com/manage-apps/payment-settings</div>
+              </div>
+              <div class="browser-body">
+                <img src="public/images/image7.png" alt="Centralized payment credentials dashboard" class="lightbox-trigger">
+              </div>
+            </div>
+            <div class="caption">Click on the image to view Centralized Payment and webhook configuration panel.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Rules and Guidelines -->
+      <section id="rules-usage" class="content-section">
+        <div class="section-header">
+          <h2>Usage Guidelines & Security Rules</h2>
+          <p>Essential implementation rules for SSO token security and payment webhook durability.</p>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Do's Card -->
+          <div class="guideline-card guidelines-do">
+            <div class="guideline-header">
+              <i data-lucide="check-circle-2" class="guideline-icon"></i>
+              <h3>Do's</h3>
+            </div>
+            <ul class="guideline-list">
+              <li>Store your <code>Client Secret</code> securely in your server's system environment variables.</li>
+              <li>Always check and verify the <code>X-WhiteNet-Signature</code> header on incoming payment webhooks to prevent spoofing.</li>
+              <li>Add all domain origins where checkouts can originate to the "Allowed Domains" list.</li>
+              <li>Log and monitor callback responses and webhook HTTP status codes in your developer dashboard.</li>
+            </ul>
+          </div>
+
+          <!-- Don'ts Card -->
+          <div class="guideline-card guidelines-dont">
+            <div class="guideline-header">
+              <i data-lucide="x-circle" class="guideline-icon"></i>
+              <h3>Don'ts</h3>
+            </div>
+            <ul class="guideline-list">
+              <li>Do not expose the <code>Client Secret</code> in frontend SPA React/Vue/Vite client-side code.</li>
+              <li>Do not bypass webhook signature validation checks in your production environment.</li>
+              <li>Do not use wildcard matches like <code>*</code> in redirect callback URLs in production.</li>
+              <li>Do not configure webhooks to retry infinitely on connection failure; process events asynchronously.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Settlements -->
+      <section id="settlements" class="content-section">
+        <div class="section-header">
+          <h2>Settlements & Balance Checks</h2>
+          <p>Monitor your sales, configure payout destinations, and request balance settlements from WytNet.</p>
+        </div>
+
+        <div class="grid-2col">
+          <div class="info-column">
+            <div class="interactive-checklist-box">
+              <h3>Steps to complete</h3>
+              <ul class="checklist" data-category="settlements">
+                <li>
+                  <input type="checkbox" id="set-step-1" class="task-checkbox">
+                  <label for="set-step-1">Navigate to the "Settlements" section in your developer console.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="set-step-2" class="task-checkbox">
+                  <label for="set-step-2">Review your current Earnings and Available Balance details.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="set-step-3" class="task-checkbox">
+                  <label for="set-step-3">Go to Settings to configure your banking/routing details.</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="set-step-4" class="task-checkbox">
+                  <label for="set-step-4">Click "Request Settlement" once you cross the minimum threshold limit.</label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="alert-box alert-info">
+              <i data-lucide="landmark"></i>
+              <div>
+                <strong>Payout Cycles & Limits</strong>
+                <p>WytNet settlements are processed within 3-5 business days of request submission, provided the available balance exceeds the required threshold limit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-column">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+                <div class="browser-address">wytnet.com/developer/settlements</div>
+              </div>
+              <div class="browser-body">
+                <img src="public/images/image8.png" alt="Developer earnings settlements panel" class="lightbox-trigger">
+              </div>
+            </div>
+            <div class="caption">Click on the image to view Settlements dashboard configuration.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: FAQ Accordion (AlloWear Style) -->
+      <section id="faq" class="content-section">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>Answers to common developer setup, single sign-on, and payment webhook questions.</p>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I reset my WytPass Client Secret?</span>
+              <i data-lucide="chevron-down" class="faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Navigate to "Manage Apps" &gt; "Security Tab" in your developer dashboard. Released edits must be active (click "App Edit Request" if live) before clicking the "Regenerate Client Secret" button. Note that resetting the secret instantly invalidates the previous one, breaking active server OAuth connections until updated.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is the retry schedule for failed Webhook deliveries?</span>
+              <i data-lucide="chevron-down" class="faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>If WytNet payments webhook fails to receive a successful 2xx response from your server, it logs a connection failure and schedules automatic retries. Webhooks are retried up to 5 times using exponential backoff (15m, 1h, 4h, 12h, 24h) before the payload delivery is marked as suspended.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I resolve a "Redirect URI mismatch" error during SSO?</span>
+              <i data-lucide="chevron-down" class="faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Ensure that the <code>redirect_uri</code> parameter sent inside your application's authorize URL matches exactly with the callback URLs registered under your WytPass SSO settings in the WytNet dashboard. This includes checking protocols (HTTP vs HTTPS), trailing slashes, and port numbers.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I customize the centralized checkout styling?</span>
+              <i data-lucide="chevron-down" class="faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. WytNet inherits payment checkout branding from your app listing page. Updating your application's Logo and primary brand hex colors under the "Assets & Media" tab will instantly reflect on the centralized WytNet payment popup presented to your customers during checkout.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Search Modal Overlay (AlloWear Style) -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-container">
+      <div class="search-modal-header">
+        <i data-lucide="search" class="search-modal-icon"></i>
+        <input type="text" id="modal-search-input" placeholder="Search guides, code snippets, FAQs..." autocomplete="off">
+        <span class="search-modal-close" id="search-modal-close">&times;</span>
+      </div>
+      <div class="search-modal-body">
+        <!-- Search Category Groupings -->
+        <div class="search-results-group" id="search-group-overview">
+          <div class="search-group-title">Overview & Workflow</div>
+          <div class="search-results-list">
+            <a href="#welcome" class="search-result-item" data-search-text="getting started wytnet ecosystem welcome dashboard">
+              <i data-lucide="home"></i>
+              <span>Getting Started with WytNet</span>
+            </a>
+            <a href="#workflow" class="search-result-item" data-search-text="workflow step registration dev app listing payment sso payouts">
+              <i data-lucide="git-branch"></i>
+              <span>Interactive Ecosystem Workflow</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="search-results-group" id="search-group-guides">
+          <div class="search-group-title">Guides & Submissions</div>
+          <div class="search-results-list">
+            <a href="#user-reg" class="search-result-item" data-search-text="user registration credentials fullname email username phone password">
+              <i data-lucide="user-plus"></i>
+              <span>User Registration Flow</span>
+            </a>
+            <a href="#dev-account" class="search-result-item" data-search-text="developer account organisation website verification contact details">
+              <i data-lucide="shield-check"></i>
+              <span>Developer Registration & Verification</span>
+            </a>
+            <a href="#app-creation" class="search-result-item" data-search-text="app creation manage details assets media logo client id secret">
+              <i data-lucide="plus-circle"></i>
+              <span>App Creation and Submission</span>
+            </a>
+            <a href="#app-edit" class="search-result-item" data-search-text="app edit request edit lock unlock submit review">
+              <i data-lucide="edit-3"></i>
+              <span>App Edit and Unlock Requests</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="search-results-group" id="search-group-integrations">
+          <div class="search-group-title">Integrations & Payouts</div>
+          <div class="search-results-list">
+            <a href="#sso" class="search-result-item" data-search-text="wytpass sso single sign-on client secret token userinfo">
+              <i data-lucide="key-round"></i>
+              <span>WytPass SSO Token Setup</span>
+            </a>
+            <a href="#payment" class="search-result-item" data-search-text="centralized payment webhook checkout verify signatures hmac sha256 whitenet signature">
+              <i data-lucide="credit-card"></i>
+              <span>Centralized Payments & Webhooks</span>
+            </a>
+            <a href="#rules-usage" class="search-result-item" data-search-text="usage guidelines security rules do's don'ts checkmarks client secrets">
+              <i data-lucide="check-square"></i>
+              <span>SSO & Webhook Guidelines</span>
+            </a>
+            <a href="#settlements" class="search-result-item" data-search-text="settlements earnings available balance bank settings routing payout threshold">
+              <i data-lucide="wallet"></i>
+              <span>Settlement balance withdrawals</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="search-results-group" id="search-group-faq">
+          <div class="search-group-title">Frequently Asked Questions</div>
+          <div class="search-results-list">
+            <a href="#faq" class="search-result-item" data-search-text="faq reset client secret sso timeout limit retry schedule redirect uri mismatch checkout customization">
+              <i data-lucide="help-circle"></i>
+              <span>Frequently Asked Questions & Support</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- No results template -->
+        <div class="search-no-results" id="search-no-results" style="display: none;">
+          <i data-lucide="frown"></i>
+          <p>No documentation found matching your search term.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay for Image Inspection -->
+  <div class="lightbox" id="lightbox-modal">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev"><i data-lucide="chevron-left"></i></button>
+    <div class="lightbox-content-container">
+      <img class="lightbox-content" id="lightbox-img">
+      <div id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next"><i data-lucide="chevron-right"></i></button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
