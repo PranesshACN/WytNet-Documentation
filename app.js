@@ -23,17 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const sections = document.querySelectorAll('.content-section');
   const navItems = document.querySelectorAll('.nav-item');
-  const progressBar = document.getElementById('progress-bar');
 
   const onScroll = () => {
     let scrollPos = window.scrollY || document.documentElement.scrollTop;
-    
-    // Update Top Progress Bar width based on scroll percentage
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollPos / windowHeight) * 100;
-    if (progressBar) {
-      progressBar.style.width = `${scrollPercent}%`;
-    }
 
     // Highlight Navigation Items
     sections.forEach(section => {
